@@ -9,7 +9,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "SitDown Chat",
+  title: "OnceClick AI",
   description: "Your personal AI assistant for everyday tasks",
 };
 

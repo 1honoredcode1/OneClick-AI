@@ -12,7 +12,7 @@ const NavBar = () => {
             <div className="w-2.5 h-2.5 bg-black rounded-[1px]"></div>
           </div>
           <span className="text-base font-semibold tracking-tight text-white/90">
-            SitDown Chat
+            OneClick AI
           </span>
         </Link>
         <div className="hidden md:flex items-center gap-8 text-sm font-light text-zinc-400">
