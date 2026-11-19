@@ -40,10 +40,10 @@ const Pricing = () => {
           </button>
         </div>
         <div
-          className="p-8 rounded-3xl border border-white/5 bg-zinc-900/20 flex flex-col
+          className="p-8 rounded-3xl border border-white/5 bg-white/3 flex flex-col
         items-start text-left hover:bg-zinc-900/40 transition-colors"
         >
-          <div className="text-sm font-medium text-zinc-400 mb-2">Pro</div>
+          <div className="text-sm font-bold text-sky-600 mb-2">Pro</div>
           <div className="text-4xl font-medium text-white tracking-tight mb-6">
             $10 <span className="text-lg text-zinc-600 font-light">/mo</span>
           </div>
@@ -71,7 +71,7 @@ const Pricing = () => {
           </ul>
           <button
             className="w-full py-3 rounded-xl border bg-white text-black border-white 
-            hover:bg-zinc-200 transition-colors text-sm font-medium mt-auto"
+            hover:bg-zinc-200 transition-colors text-sm font-medium mt-auto cursor-pointer"
           >
             Start Pro
           </button>
