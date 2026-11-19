@@ -59,9 +59,7 @@ const Integration = () => {
               </div>
             </div>
             <div className="font-mono text-xs md:text-sm leading-7 text-zinc-400">
-              <div className="text-zinc-600">
-                &lt;! -- OneClick Support --&gt;
-              </div>
+              <div className="text-zinc-600">&lt;! -- OneClick AI --&gt;</div>
               <div>
                 &lt;<span className="text-pink-400">script</span>
               </div>

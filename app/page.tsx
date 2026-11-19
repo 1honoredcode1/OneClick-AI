@@ -1,4 +1,5 @@
 import Features from "@/components/landing/features";
+import Footer from "@/components/landing/footer";
 import Hero from "@/components/landing/hero";
 import Integration from "@/components/landing/integrations";
 import NavBar from "@/components/landing/nav";
@@ -14,6 +15,7 @@ const page = () => {
       <Features />
       <Integration />
       <Pricing />
+      <Footer />
     </main>
   );
 };
