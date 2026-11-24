@@ -4,16 +4,22 @@ import { isAuthorized } from "@/lib/isAuthorized";
 import { useEffect, useState } from "react";
 
 export const useUser = () => {
-  const [email, setEmail] = useState(null);
+  const [email, setEmail] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchUser = async () => {
-      const user = await isAuthorized();
-      setEmail(user.email);
-      setLoading(false);
+      try {
+        const user = await isAuthorized();
+        setEmail(user?.email ?? null);
+      } catch (error) {
+        console.error("Failed to read user session", error);
+        setEmail(null);
+      } finally {
+        setLoading(false);
+      }
     };
-    fetchUser();
+    void fetchUser();
   }, []);
 
   return [email, loading];

@@ -28,7 +28,13 @@ export async function POST(req: NextRequest) {
     external_links,
   });
 
-  (await cookies()).set("metadata", JSON.stringify({ business_name }));
+  (await cookies()).set("metadata", JSON.stringify({ business_name }), {
+    httpOnly: true,
+    secure: process.env.NODE_ENV === "production",
+    sameSite: "lax",
+    path: "/",
+    maxAge: 60 * 60 * 24 * 30,
+  });
 
   return NextResponse.json({ metadataResponse }, { status: 201 });
 }

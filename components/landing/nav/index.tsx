@@ -1,9 +1,41 @@
 import { isAuthorized } from "@/lib/isAuthorized";
 import Link from "next/link";
+import { Suspense } from "react";
 
-const NavBar = async () => {
+const NavActions = async () => {
   const user = await isAuthorized();
 
+  return (
+    <div className="flex items-center gap-4">
+      {user ? (
+        <Link
+          href="/dashboard"
+          className="b-10 p-1.5 rounded-xl bg-white text-black
+          text-sm font-medium hover:bg-zinc-200 transition-all flex items-center gap-2"
+        >
+          Dashboard
+        </Link>
+      ) : (
+        <>
+          <Link
+            href="/api/auth"
+            className="text-xs font-medium text-zinc-400 hover:text-white transition-colors"
+          >
+            Sign In
+          </Link>
+          <Link
+            href="/api/auth"
+            className="text-xs font-medium bg-white text-black px-4 py-2 rounded-full hover:bg-zinc-200 transition-colors"
+          >
+            Get Started
+          </Link>
+        </>
+      )}
+    </div>
+  );
+};
+
+const NavBar = () => {
   return (
     <nav
       className="fixed top-0 inset-x-0 z-50 transition-all duration-300 backdrop-blur-sm
@@ -32,34 +64,16 @@ const NavBar = async () => {
             Pricing
           </Link>
         </div>
-        <div className="flex items-center gap-4">
-          {user ? (
-            <div className="flex items-center gap-2">
-              <Link
-                href="/dashboard"
-                className="b-10 p-1.5 rounded-xl bg-white text-black
-              text-sm font-medium hover:bg-zinc-200 transition-all flex items-center gap-2"
-              >
-                Dashboard
-              </Link>
-            </div>
-          ) : (
-            <>
-              <Link
-                href="/api/auth"
-                className="text-xs font-medium text-zinc-400 hover:text-white transition-colors"
-              >
-                Sign In
-              </Link>
-              <Link
-                href="/api/auth"
-                className="text-xs font-medium bg-white text-black px-4 py-2 rounded-full hover:bg-zinc-200 transition-colors"
-              >
-                Get Started
-              </Link>
-            </>
-          )}
-        </div>
+        <Suspense
+          fallback={
+            <div
+              aria-hidden="true"
+              className="h-8 w-40 rounded-full bg-white/5 animate-pulse"
+            />
+          }
+        >
+          <NavActions />
+        </Suspense>
       </div>
     </nav>
   );
